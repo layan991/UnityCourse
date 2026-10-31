@@ -4,6 +4,9 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     public float speed;
+    public int score;
+    public int targetScore;
+    public GameObject spawner;
 
     private Rigidbody2D rb;
     private Vector3 direction;
@@ -27,5 +30,20 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         rb.MovePosition(transform.position + direction * speed * Time.fixedDeltaTime);
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Coin"))
+        {
+            score += other.GetComponent<Coin>().value;
+            Destroy(other.gameObject);
+            spawner.GetComponent<CoinSpawner>().CoinCollected();
+
+            if (score >= targetScore)
+            {
+                Debug.Log("you won");
+            }
+        }
     }
 }
