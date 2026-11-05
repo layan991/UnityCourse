@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -25,6 +26,7 @@ public class Enemy : MonoBehaviour
         if (other.CompareTag(playerTag))
         {
             Debug.Log("you lose");
+            EditorApplication.isPlaying = false;
         }
     }
 }

@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -43,6 +44,7 @@ public class Player : MonoBehaviour
             if (score >= targetScore)
             {
                 Debug.Log("you won");
+                EditorApplication.isPlaying = false;
             }
         }
     }
