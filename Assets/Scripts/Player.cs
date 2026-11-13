@@ -1,6 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D rb;
     private Vector3 direction;
+    
+    public TMP_Text scoreText;
 
     void Start()
     {
@@ -39,6 +42,7 @@ public class Player : MonoBehaviour
         {
             score += other.GetComponent<Coin>().value;
             Debug.Log("Score: " + score);
+            scoreText.text = "Score: " + score;
             Destroy(other.gameObject);
             spawner.GetComponent<CoinSpawner>().CoinCollected();
 
