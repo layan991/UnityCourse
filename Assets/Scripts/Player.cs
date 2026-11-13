@@ -38,6 +38,7 @@ public class Player : MonoBehaviour
         if (other.CompareTag("Coin"))
         {
             score += other.GetComponent<Coin>().value;
+            Debug.Log("Score: " + score);
             Destroy(other.gameObject);
             spawner.GetComponent<CoinSpawner>().CoinCollected();
 
