@@ -153,7 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Player
   speed: 15
   score: 0
-  targetScore: 100
+  targetScore: 1000
   spawner: {fileID: 1369582604}
 --- !u!50 &12495409
 Rigidbody2D:
@@ -548,6 +548,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   playerTag: Player
   speed: 7
+  speedIncrease: 0.25
+  secondsBetweenIncreases: 10
+  maxSpeed: 12
 --- !u!50 &626950515
 Rigidbody2D:
   serializedVersion: 5

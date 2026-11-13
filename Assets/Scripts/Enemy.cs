@@ -1,10 +1,15 @@
+using System.Collections;
 using UnityEditor;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
     public string playerTag = "Player";
+    
     public float speed;
+    public float speedIncrease;
+    public float secondsBetweenIncreases;
+    public float maxSpeed;
 
     private Transform target;
     private Rigidbody2D rb;
@@ -13,6 +18,16 @@ public class Enemy : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         target = GameObject.FindGameObjectWithTag(playerTag).transform;
+        StartCoroutine(SpeedUpOverTime(secondsBetweenIncreases, speedIncrease));
+    }
+
+    IEnumerator SpeedUpOverTime(float seconds, float amount)
+    {
+        while (speed < maxSpeed)
+        {
+            yield return new WaitForSeconds(seconds);
+            speed += amount;
+        }
     }
 
     void FixedUpdate()
